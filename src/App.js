@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Board from './components/Board.js';
+import Input from './components/Input';
 
 function App() {
+  const [userText, setUserText] = useState('');
+  const [messageText, setMessageText] = useState('');
+  const [messages, setMessages] = useState([]);
+  
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Message Board</h1>
       </header>
+      <Input 
+        user={userText}
+        setUser={setUserText}
+        message={messageText}
+        setMessage={setMessageText}
+        messages={messages}
+        setMessages={setMessages}/>
+      <Board 
+        messages={messages}
+        setMessages={setMessages}/>
     </div>
   );
 }
